@@ -1,8 +1,10 @@
 <?php
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
      include "../config.php";
      session_start();
      $id =  $_SESSION["id"];
+     
 
      if (isset($_POST["condition"]) && $_POST["condition"] == "send") {
           $message = $_POST["message"];
@@ -15,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                $insert->bindParam(":message", $message);
                $insert->bindParam(":senderId", $id);
                $insert->execute();
-               echo "done";
+               echo "verified";
           } catch (PDOException $e) {
                echo "error";
           }

@@ -25,6 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+                        $stmt = $con->prepare("SELECT username FROM $tbname WHERE username = :name");
+                        $stmt->bindParam(':name', $name);
+                        $stmt->execute();
+                        $fetch = $stmt->fetch();
+    
+                        if ($fetch) {
+                            echo "alreadyName";
+                        } else { 
                         $insert = $con->prepare("INSERT INTO $tbname (username, user_pfp) VALUES(:name, :img)");
                         $insert->bindParam(":name", $name);
                         $insert->bindParam(":img", $imgPro);
@@ -35,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $fetch = $select->fetch();
                         $_SESSION["id"] = $fetch["user_id"];
                         echo "verified";
+                        }
                     } catch (PDOException $e) {
                         echo "error: " . $e->getMessage();
                     }

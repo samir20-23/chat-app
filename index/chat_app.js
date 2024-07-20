@@ -36,10 +36,12 @@ submit.addEventListener("click", () => {
       if (response == "emptyName") {
         error.innerHTML = "please enter a valid name";
       }
-
+      if (response == "alreadyName") {
+        error.innerHTML = "Username already exists, please choose another name";
+      }
       if (response == "verified") {
         // reaction
-        window.location = "../chat_room/chat_room.html";
+        window.location = "../authentification/chat_room.html";
         
       }
     } else {
