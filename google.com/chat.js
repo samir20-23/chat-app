@@ -26,11 +26,6 @@ const users = [
         lastMessageTime: "01:00",
         messages: [
             { text: "Hello!", time: "00:30", sender: "user" },
-            { text: "Hi, ", time: "01:00", sender: "user" },
-            { text: "ccc !", time: "00:30", sender: "user" },
-            { text: "oolllaaa", time: "01:00", sender: "user" },
-            { text: "Please", time: "00:30", sender: "user" },
-            { text: "cc", time: "01:00", sender: "user" },
         ]
     },
     {
